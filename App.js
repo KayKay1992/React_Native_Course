@@ -5,10 +5,10 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View>
-        <Text>Welcome to React Native!</Text>
-        <Text>This is an example app.</Text>
+        <Text style={{margin: 16, borderWidth: 1, borderColor: 'red', padding: 16}}>Welcome to React Native!</Text>
+        <Text style={styles.dummyText}>This is an example app.</Text>
         <View>
-        <Text>when you press the button nothing happens </Text>
+        <Text style={styles.dummyText}>when you press the button nothing happens </Text>
           <Text> because we have not added interactivity</Text>   
         </View>
         
@@ -26,4 +26,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  dummyText: {
+    marginTop: 16,
+    borderWidth: 1,
+    borderColor: 'red',
+    padding: 16,
+  }
 });
