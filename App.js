@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 
 export default function App() {
   const [enteredGoalText, setEnteredGoalText] = useState('');
+  const [courseGoals, setCourseGoals] = useState([]);
   function goalInputHandler(enteredText){
     // Add your code here to add a new goal to the list
     setEnteredGoalText(enteredText)
@@ -11,7 +12,7 @@ export default function App() {
 
   function addGoalHandler() {
     // Add your code here to add the goal to the list
-    console.log(enteredGoalText)
+    setCourseGoals((currentCourseGoals) =>[...currentCourseGoals, enteredGoalText])
 
   }
   return (
@@ -23,7 +24,7 @@ export default function App() {
       <View style={styles.goalsContainer}>
       
         {/* Display goals here */}
-        <Text>Your Goals:</Text>
+       {courseGoals.map((goal) =><Text key={goal}>{goal}</Text>)}
       </View>
      
     </View>
