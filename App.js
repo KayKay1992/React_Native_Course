@@ -13,10 +13,10 @@ export default function App() {
 
   }
 
-  function deleteGoalHandler() {
+  function deleteGoalHandler(deleteGoalId) {
     // Add your code here to delete a goal from the list
-    // setCourseGoals((currentCourseGoals) => currentCourseGoals.filter((goal) => goal.id!== deletedGoalId));
-    console.log("Goal deleted");
+    setCourseGoals((currentCourseGoals) => currentCourseGoals.filter((goal) => goal.id!== deleteGoalId));
+  
   }
   return (
     <View style={styles.appContainer}>
@@ -27,7 +27,7 @@ export default function App() {
       <FlatList data={courseGoals} renderItem={itemData=> {
         
        return  (
-        <GoalItem text={itemData.item.text} onDeleteItem={deleteGoalHandler}/>
+        <GoalItem text={itemData.item.text} onDeleteItem={deleteGoalHandler} id={itemData.item.id}/>
        )  
        
       }} keyExtractor={(item, inddex)=> {
