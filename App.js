@@ -14,9 +14,15 @@ export default function App() {
     setModalIsVisible(true)
   }
 
+  function endAddGoalHandler() {
+    setModalIsVisible(false);
+  }
+
   function addGoalHandler(enteredGoalText) {
     // Add your code here to add the goal to the list
-    setCourseGoals((currentCourseGoals) =>[...currentCourseGoals, {text: enteredGoalText, id: Math.random().toString()}]);
+    setCourseGoals((currentCourseGoals) =>[...currentCourseGoals, {text: enteredGoalText, id: Math.random().toString()},]);
+    endAddGoalHandler();
+
 
   }
 
@@ -28,7 +34,7 @@ export default function App() {
   return (
     <View style={styles.appContainer}>
       <Button title='Add new goal'color='#5e0acc' onPress={startAddGoalHandler}/>
-      <GoalInput visible={modalIsVisible} onAddGoal={addGoalHandler} />
+      <GoalInput visible={modalIsVisible} onAddGoal={addGoalHandler} onCancel={endAddGoalHandler} />
       
        {/* Display goals here */}
       <View style={styles.goalsContainer}>
