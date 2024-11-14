@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
-import { StyleSheet, ImageBackground} from 'react-native';
+import { StyleSheet, ImageBackground, SafeAreaView} from 'react-native';
 import StartGameScreen from './screens/StartGameScreen';
 import GameScreen from './screens/GameScreen';
 
@@ -20,7 +20,10 @@ export default function App() {
   return(
   <LinearGradient colors={['#4e0329', '#ddb10f']} style={styles.rootScreen}>
     <ImageBackground source={require('./assets/images/jonathan-petersson-W8V3G-Nk8FE-unsplash.jpg')} resizeMode='cover' style={styles.rootScreen} imageStyle={styles.backgroundImage}>
-      { screen}
+     {/* /*Add SafeAreaView to avoid cutting off the top and bottom edges of the screen on iPhone X and XR devices.*/ }
+      <SafeAreaView style={styles.rootScreen}>
+         { screen}
+       </SafeAreaView>
     </ImageBackground>
   </LinearGradient>
   ) 
