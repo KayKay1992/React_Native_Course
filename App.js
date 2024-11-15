@@ -32,7 +32,6 @@ export default function App() {
 const styles = StyleSheet.create({
   // Add your own styles here
   rootScreen: {
-    backgroundColor: '#ddb52f',
     flex: 1,
   },
   backgroundImage: {
