@@ -12,10 +12,10 @@ const styles = StyleSheet.create({
         fontSize: 28,
         fontWeight: 'bold',
         marginBottom: 20,
-        color:   Colors.secondary500,
+        color:   'white',
         textAlign: 'center',
         borderWidth:2,
-        borderColor:  Colors.secondary500,
+        borderColor:  'white',
         borderRadius: 10,
         padding :12,
       }
