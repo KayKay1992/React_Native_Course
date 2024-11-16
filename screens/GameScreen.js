@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
-import {View,  Text, StyleSheet, Alert} from "react-native";
+import {View, StyleSheet, Alert} from "react-native";
 import Title from "../components/Title";
 import NumberContainer from "../components/Game/NumberContainer";
 import PrimaryButton from "../components/PrimaryButton";
+import Card from "../components/ui/Card";
+import InstructionText from "../components/ui/InstructionText";
 
 // GameScreen.js
 
@@ -50,14 +52,14 @@ function GameScreen({userNumber, onGameOver}) {
         <Title>Opponent's Guess </Title>
        {/* Your Guess */}
         <NumberContainer>{currentGuess}</NumberContainer>
-      <View>
-        <Text>Higher or Lower?</Text>
+      <Card>
+        <InstructionText>Higher or Lower?</InstructionText>
         {/* + - */}
         <View>
         <PrimaryButton onPress={nextGuessHandler.bind(this, 'greater')}>+</PrimaryButton>
         <PrimaryButton onPress={nextGuessHandler.bind(this, 'lower')}>-</PrimaryButton>
         </View>
-      </View>
+      </Card>
       <View>
         {/* LOG ROUNDS */}
       </View>
