@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import {View, StyleSheet, Alert, Text} from "react-native";
+import {View, StyleSheet, Alert, Text, FlatList} from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Title from "../components/Title";
 import NumberContainer from "../components/Game/NumberContainer";
@@ -76,7 +76,8 @@ function GameScreen({userNumber, onGameOver}) {
       <View>
         {/* LOG ROUNDS */}
         <View>
-          {guessRounds.map(guessRound =><Text key={guessRound}>{guessRound}</Text>)}
+          {/* {guessRounds.map(guessRound =><Text key={guessRound}>{guessRound}</Text>)} */}
+          <FlatList data={guessRounds} renderItem={(itemData) => <Text>{itemData.item}</Text>} keyExtractor={(item) =>item}/>
         </View>
       </View>
     </View>
