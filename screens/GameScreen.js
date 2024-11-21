@@ -91,7 +91,8 @@ export default GameScreen;
 const styles = StyleSheet.create({
     GameScreen: {
         flex: 1,
-        padding: 20,  
+        padding: 24,  
+        alignItems: 'center',
     },
     InstructionText: {
       marginBottom:20,
