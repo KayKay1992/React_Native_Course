@@ -8,8 +8,10 @@ import InstructionText from "../components/ui/InstructionText";
 
 
 function StartGameScreen({onPickNumber}) {
-    const [enteredNumber, setEnteredNumber] = useState('');
-    const { width, height } = useWindowDimensions();
+const [enteredNumber, setEnteredNumber] = useState('');
+
+    const WindowWidth = useWindowDimensions().width;
+    // const WindowHeight= useWindowDimensions().height;
 
     function numberInputHandler(enteredText) {
         setEnteredNumber(enteredText);
@@ -29,11 +31,10 @@ function StartGameScreen({onPickNumber}) {
             return;
        }
        onPickNumber(chosenNumber);
-    }
+    };
 
-    const marginTopDistance = height  < 380 ? 30 : 100;
-
-
+    const marginTopDistance = WindowWidth > 480 ? 20 : 140;
+   
     return(
         <View style={[styles.mainContainer, {marginTop: marginTopDistance}]}>
             <Title>Guess My Number</Title>
