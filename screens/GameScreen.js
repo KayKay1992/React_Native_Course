@@ -65,16 +65,14 @@ function GameScreen({userNumber, onGameOver}) {
 
   let content = (<>
     {/* Your Guess */}
-   
       <Card>
         <View style={styles.buttonsContainer}>
-       
         </View>
       </Card>
   </>
   );
 
-  if(windowWidth > 500) {
+  if(windowWidth > 380) {
     content =  (
       <>
        <View style={styles.buttonContainerWide}>
@@ -88,7 +86,7 @@ function GameScreen({userNumber, onGameOver}) {
       
       </View>
       </>
-    ) 
+    )  
   }
   return (
     <View style={styles.GameScreen}>
@@ -108,7 +106,7 @@ export default GameScreen;
 const styles = StyleSheet.create({
     GameScreen: {
         flex: 1,
-        padding: 24,  
+        padding: 30,  
         alignItems: 'center',
     },
     InstructionText: {
