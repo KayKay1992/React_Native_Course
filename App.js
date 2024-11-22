@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import { StyleSheet, ImageBackground, SafeAreaView} from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import StartGameScreen from './screens/StartGameScreen';
 import GameScreen from './screens/GameScreen';
 import GameOverScreen from './screens/GameOverScreen';
 import Colors from './constants/colors';
+
 
 
 export default function App() {
@@ -43,6 +45,8 @@ export default function App() {
 
 
   return(
+    <>
+    <StatusBar style="light"/>
   <LinearGradient colors={[Colors.primary700, Colors.secondary600 ]} style={styles.rootScreen}>
     <ImageBackground source={require('./assets/images/jonathan-petersson-W8V3G-Nk8FE-unsplash.jpg')} resizeMode='cover' style={styles.rootScreen} imageStyle={styles.backgroundImage}>
      {/* /*Add SafeAreaView to avoid cutting off the top and bottom edges of the screen on iPhone X and XR devices.*/ }
@@ -51,6 +55,7 @@ export default function App() {
        </SafeAreaView>
     </ImageBackground>
   </LinearGradient>
+   </>
   ) 
 }
 
