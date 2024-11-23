@@ -7,7 +7,11 @@ import CategoriesScreen from './screens/screen';
 
 export default function App() {
   return(
-     <CategoriesScreen/>
+    <>
+       <StatusBar style='light'/>
+        <CategoriesScreen/>
+       
+     </>
   ) 
 }
 

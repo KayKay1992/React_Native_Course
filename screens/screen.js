@@ -10,7 +10,7 @@ function renderCategoriesItem(itemData){
 }
 function CategoriesScreen(){
     return (
-    <FlatList data={CATEGORIES} keyExtractor={(item) => item.id} renderItem={renderCategoriesItem}/>
+    <FlatList data={CATEGORIES} keyExtractor={(item) => item.id} renderItem={renderCategoriesItem} key={''} numColumns={2}/>
     )
 }
 
