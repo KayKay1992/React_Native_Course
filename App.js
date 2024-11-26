@@ -1,18 +1,26 @@
 
-import { StyleSheet,Text, View} from 'react-native';
+import { StyleSheet } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import CategoriesScreen from './screens/screen';
+import CategoriesScreen from './screens/CategoriesScreen';
+import MealOverviewScreen from './screens/MealOverviewScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+//make sure you install the compatible version of react-navigation/native-stack to avoid error
 
-
+const Stack = createNativeStackNavigator();
 export default function App() {
   return(
-    <>
+  <>
        <StatusBar style='light'/>
-        <CategoriesScreen/>
-       
-     </>
-  ) 
+       <NavigationContainer>
+         <Stack.Navigator>
+          <Stack.Screen name="MealsCategories" component={CategoriesScreen} />
+          <Stack.Screen name="MealOverview" component={MealOverviewScreen} />
+        </Stack.Navigator> 
+     </NavigationContainer>
+    </>
+  ) ;
 }
 
 const styles = StyleSheet.create({
