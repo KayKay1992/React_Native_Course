@@ -13,8 +13,27 @@ function MealOverviewScreen({route}) {
    });
 
    function renderMealItem(itemData){
+    const item = itemData.item;
+    const mealItemProps = {
+        title: item.title,
+        imageUrl: item.imageUrl,
+        duration: item.duration,
+        complexity: item.complexity,
+        affordability: item.affordability,
+        // isGlutenFree: item.isGlutenFree,
+        // isVegan: item.isVegan,
+        // isVegetarian: item.isVegetarian,
+        // isLactoseFree: item.isLactoseFree,
+        // isSustainable: item.isSustainable,
+        // isDairyFree: item.isDairyFree,
+        // isNutFree: item.isNutFree,
+        // isSugarFree: item.isSugarFree,
+        // isPeanutFree: item.isPeanutFree,
+        // isFishFree: item.isFishFree,
+        // isShellfishFree: item.isShellfishFree,
+    }
     return (
-       <MealItem title={itemData.item.title}/>
+       <MealItem {...mealItemProps}/>
     )
    }
 
