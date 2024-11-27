@@ -5,6 +5,7 @@ import CategoriesScreen from './screens/CategoriesScreen';
 import MealOverviewScreen from './screens/MealOverviewScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import MealDetailScreen from './screens/MealDetailScreen';
 
 //make sure you install the compatible version of react-navigation/native-stack to avoid error
 
@@ -23,19 +24,8 @@ export default function App() {
             title: 'All Categories',
           }} />
           <Stack.Screen name="MealOverview" component={MealOverviewScreen}  
-          //static display of title
-          // options={{
-          //   title: 'Meal Overview',
-          // }} 
-
-          //dynamic display of title option 1
-          // options={({route, navigation}) => {
-          //   const catId = route.params.categoryId;
-          //   return {
-          //     title: catId,
-          //   }
-          // }}
            />
+           <Stack.Screen name="MealDetail" component={MealDetailScreen}/>
         </Stack.Navigator> 
      </NavigationContainer>
     </>
