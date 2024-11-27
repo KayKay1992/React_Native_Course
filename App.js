@@ -21,16 +21,21 @@ export default function App() {
          }}>
           <Stack.Screen name="MealsCategories" component={CategoriesScreen} options={{
             title: 'All Categories',
-            // headerStyle: { backgroundColor: '#351401'},
-            // headerTintColor: 'white',
-            // contentStyle: { backgroundColor: '#3f2f01' },
           }} />
-          <Stack.Screen name="MealOverview" component={MealOverviewScreen}  options={{
-            title: 'Meal Overview',
-            // headerStyle: { backgroundColor: '#351401'},
-            // headerTintColor: 'white',
-            // contentStyle: { backgroundColor: '#3f2f01' },
-          }}  />
+          <Stack.Screen name="MealOverview" component={MealOverviewScreen}  
+          //static display of title
+          // options={{
+          //   title: 'Meal Overview',
+          // }} 
+
+          //dynamic display of title option 1
+          // options={({route, navigation}) => {
+          //   const catId = route.params.categoryId;
+          //   return {
+          //     title: catId,
+          //   }
+          // }}
+           />
         </Stack.Navigator> 
      </NavigationContainer>
     </>
