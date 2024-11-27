@@ -5,7 +5,11 @@ import CategoryGridTile from "../components/CategoryGridTile";
 export default function CategoriesScreen({navigation}){
     function renderCategoriesItem(itemData){
         function pressHandler(){
-            navigation.navigate('MealOverview')
+            navigation.navigate('MealOverview', {
+                categoryId: itemData.item.id,
+                categoryTitle: itemData.item.title,
+                categoryColor: itemData.item.color,
+            })
         }
      return <CategoryGridTile title={itemData.item.title}
      color={itemData.item.color} onPress={pressHandler}/>;
