@@ -1,9 +1,10 @@
 import {useLayoutEffect} from 'react'
-import { Image, Text, View, StyleSheet, ScrollView, Button} from 'react-native'
+import { Image, Text, View, StyleSheet, ScrollView} from 'react-native'
 import { MEALS } from '../data/dummy-data';
 import MealDetails from '../components/MealDetails';
 import Subtitle from '../components/mealDetail/Subtitle';
 import List from '../components/mealDetail/List';
+import IconButton from '../components/IconButton';
 
 export default function MealDetailScreen({route, navigation}) {
 
@@ -19,7 +20,7 @@ export default function MealDetailScreen({route, navigation}) {
         navigation.setOptions({
             headerRight: () => {
                 return (
-                    <Button title='Favourite' onPress={headerButtonPressedHandler}/>
+                    <IconButton icon='heart' color='white' onPress={headerButtonPressedHandler}/>
                 )
             }
         });
