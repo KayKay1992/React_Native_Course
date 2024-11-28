@@ -1,5 +1,5 @@
 
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Button } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import CategoriesScreen from './screens/CategoriesScreen';
 import MealOverviewScreen from './screens/MealOverviewScreen';
@@ -25,7 +25,14 @@ export default function App() {
           }} />
           <Stack.Screen name="MealOverview" component={MealOverviewScreen}  
            />
-           <Stack.Screen name="MealDetail" component={MealDetailScreen}/>
+           <Stack.Screen name="MealDetail" component={MealDetailScreen} 
+           //This is an option but is not right if the button is going to have interaction on the same screen, so the best option is going to the meal DetailScreen componenet file and using useLayoutEffect
+          //  options={{
+          //   headerRight: () => {
+          //     return <Button title='Favourite' onPress={}/>;
+          //   },
+          //  }}
+           />
         </Stack.Navigator> 
      </NavigationContainer>
     </>
