@@ -1,15 +1,36 @@
 
-import { StyleSheet, Button } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import CategoriesScreen from './screens/CategoriesScreen';
-import MealOverviewScreen from './screens/MealOverviewScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import MealDetailScreen from './screens/MealDetailScreen';
+import CategoriesScreen from './screens/CategoriesScreen';
+import MealOverviewScreen from './screens/MealOverviewScreen';
+import FavouriteScreen from './screens/FavouriteScreen';
 
 //make sure you install the compatible version of react-navigation/native-stack to avoid error
 
 const Stack = createNativeStackNavigator();
+
+const Drawer = createDrawerNavigator();
+
+function DrawerNavigator(){
+   // Here you can create your own custom drawer navigator
+ 
+  return (
+    <Drawer.Navigator screenOptions={{
+      headerStyle: { backgroundColor: '#351401'},
+      headerTintColor: 'white',
+      sceneStyle: { backgroundColor: '#3f2f01' } }}>
+      <Drawer.Screen name='Categeries' component={CategoriesScreen} options={{
+        title: 'All Categories'
+      }}/>
+      <Drawer.Screen name='Favourite' component={FavouriteScreen}/>
+    </Drawer.Navigator>
+  );
+
+}
 export default function App() {
   return(
   <>
@@ -20,18 +41,12 @@ export default function App() {
             headerTintColor: 'white',
             contentStyle: { backgroundColor: '#3f2f01' },
          }}>
-          <Stack.Screen name="MealsCategories" component={CategoriesScreen} options={{
-            title: 'All Categories',
+          <Stack.Screen name="Drawer" component={DrawerNavigator} options={{
+            headerShown: false,
           }} />
           <Stack.Screen name="MealOverview" component={MealOverviewScreen}  
            />
            <Stack.Screen name="MealDetail" component={MealDetailScreen} 
-           //This is an option but is not right if the button is going to have interaction on the same screen, so the best option is going to the meal DetailScreen componenet file and using useLayoutEffect
-          //  options={{
-          //   headerRight: () => {
-          //     return <Button title='Favourite' onPress={}/>;
-          //   },
-          //  }}
            />
         </Stack.Navigator> 
      </NavigationContainer>
