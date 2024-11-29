@@ -9,6 +9,7 @@ import MealDetailScreen from './screens/MealDetailScreen';
 import CategoriesScreen from './screens/CategoriesScreen';
 import MealOverviewScreen from './screens/MealOverviewScreen';
 import FavouriteScreen from './screens/FavouriteScreen';
+import FavouritesContextProvider from './store/context/favourite-context';
 
 //make sure you install the compatible version of react-navigation/native-stack to avoid error
 
@@ -49,6 +50,7 @@ export default function App() {
   return(
   <>
        <StatusBar style='light'/>
+       <FavouritesContextProvider>
        <NavigationContainer>
          <Stack.Navigator screenOptions= {{
             headerStyle: { backgroundColor: '#351401'},
@@ -65,6 +67,7 @@ export default function App() {
            />
         </Stack.Navigator> 
      </NavigationContainer>
+     </FavouritesContextProvider>
     </>
   ) ;
 }
