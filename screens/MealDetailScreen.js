@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
     },
     listOuterContainer: {
         alignItems: 'center',
+        marginBottom: 90,
     },
    listContainer: {
     width: '80%'
