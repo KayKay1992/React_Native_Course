@@ -6,7 +6,7 @@ export const FavouriteContext = createContext({
     ids: [],
     addFavourite: (id) => {},
     removeFavourite: (id) => {},
-    clearFavourites: () => {},
+    clearFavourite: () => {},
 })
 
 function FavouritesContextProvider({children}) {
@@ -17,7 +17,7 @@ function FavouritesContextProvider({children}) {
     }
     
     const removeFavourite = (id) => {
-        setFavouriteMealIds((currentFavIds) => currentFavIds.filter((mealId) => mealId!== id));
+        setFavouriteMealIds((currentFavIds) => currentFavIds.filter((mealId) => mealId !== id));
     }
     
     const clearFavourite = () => {
@@ -25,10 +25,11 @@ function FavouritesContextProvider({children}) {
     }
     const value = {
         ids: favouriteMealIds,
-        addFavourite : addFavourite,
+        addFavourite: addFavourite,
         removeFavourite : removeFavourite,
-        clearFavourites : clearFavourite,
-     };
+        clearFavourite : clearFavourite  
+    }
+       
     return (
         <FavouriteContext.Provider value={value} >
             {children}
