@@ -3,6 +3,7 @@ import { useLayoutEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native'
 import IconButton from '../components/UI/iconButton';
 import { GlobalStyles } from '../constants/styles';
+import Button from '../components/UI/Button';
 
 export default function ManageExpenses({route, navigation}) {
   const edittedExpenseId = route.params?.expenseId;
@@ -19,11 +20,21 @@ export default function ManageExpenses({route, navigation}) {
   function deleteExpenseHandler(){
 
   }
+
+  function cancelHandler (){
+
+  }
+
+  function confirmHandler(){}
  
 
   return (
     <View style={styles.container}>
       {/* Adding buttons closing d modals without editing, closing the modal after editing and deleting */}
+      <View style={styles.buttons}>
+        <Button mode='flat' onPress={cancelHandler} style={styles.buttton}>Cancel</Button>
+        <Button onPress={confirmHandler} style={styles.buttton}>{isEditing ? 'Update' : 'Add'}</Button>
+      </View>
       {isEditing &&
       <View style={styles.deleteContainer}>
        <IconButton icon='trash' color={GlobalStyles.colors.error500} size={36} onPress={deleteExpenseHandler}/>
@@ -39,12 +50,20 @@ const styles = StyleSheet.create({
     backgroundColor: GlobalStyles.colors.primary800,
    
   },
+  buttons: {
+    flexDirection: 'row',
+    justifyContent:'center',
+    alignItems: 'center',
+  },
+  buttton: {
+    minWidth: 120,
+    paddingHorizontal: 8
+  },
   deleteContainer: {
     marginTop: 16,
     paddingTop: 8,
     borderTopWidth: 2,
     borderColor: GlobalStyles.colors.primary200,
-    justifyContent: 'center',
     alignItems: 'center',
   }
 });
