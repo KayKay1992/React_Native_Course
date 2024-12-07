@@ -7,6 +7,7 @@ import ManageExpenses from './screens/ManageExpenses';
 import RecentExpenses from './screens/RecentExpenses';
 import AllExpenses from './screens/AllExpenses';
 import { GlobalStyles } from './constants/styles';
+import IconButton from './components/UI/iconButton'
 
 const Stack = createNativeStackNavigator()
 const BottomTab = createBottomTabNavigator();
@@ -19,12 +20,17 @@ function ExpensesTab() {
       tabBarStyle: {backgroundColor: GlobalStyles.colors.primary500},
       tabBarActiveTintColor: GlobalStyles.colors.accent500,
       tabBarInactiveTintColor: GlobalStyles.colors.gray400,
+      headerRight: () =>(
+      <IconButton icon='add' size={24} color='white' onPress={()=> {}}/>
+    ),
     }}>
       <BottomTab.Screen name="RecentExpenses" component={RecentExpenses}
        options={{
         title: "Recent Expenses",
         tabBarLabel: "Recent ",
-        tabBarIcon: ({color, size}) => <Ionicons name='hourglass' size={size} color={color}/>
+        tabBarIcon: ({color, size}) => (
+        <Ionicons name='hourglass' size={size} color={color}/>
+      ),
       }}
        />
       <BottomTab.Screen name="AllExpenses" component={AllExpenses} options={{

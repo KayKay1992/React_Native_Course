@@ -4,8 +4,12 @@ import getFormattedDate from "../../util/date";
 
 
 export default function ExpenseItem({title, date, amount,}) {
+
+    function expensePressHandler(){
+       
+    }
   return (
-    <Pressable>
+    <Pressable onPress={expensePressHandler} style={({pressed})=> pressed && styles.pressed} android_ripple={4}>
         <View style={styles.expenseItem}>
             {/* expense details */}
             <View>
@@ -23,6 +27,9 @@ export default function ExpenseItem({title, date, amount,}) {
 
 
 const styles = StyleSheet.create({
+    pressed: {
+        opacity: 0.75
+    },
     expenseItem: {
         marginVertical: 10,
         paddingHorizontal: 20,
