@@ -18,14 +18,16 @@ export default function ManageExpenses({route, navigation}) {
   })
   
   function deleteExpenseHandler(){
-
+    navigation.goBack()
   }
 
   function cancelHandler (){
-
+     navigation.goBack()
   }
 
-  function confirmHandler(){}
+  function confirmHandler(){
+    navigation.goBack()
+  }
  
 
   return (
