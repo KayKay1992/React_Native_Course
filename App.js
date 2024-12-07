@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {Ionicons} from "@expo/vector-icons"
+import { useNavigation } from '@react-navigation/native';
 import ManageExpenses from './screens/ManageExpenses';
 import RecentExpenses from './screens/RecentExpenses';
 import AllExpenses from './screens/AllExpenses';
@@ -13,6 +14,7 @@ const Stack = createNativeStackNavigator()
 const BottomTab = createBottomTabNavigator();
 
 function ExpensesTab() {
+  const navigation = useNavigation();
   return (
     <BottomTab.Navigator screenOptions={{
       headerStyle: {backgroundColor: GlobalStyles.colors.primary500},
@@ -21,7 +23,9 @@ function ExpensesTab() {
       tabBarActiveTintColor: GlobalStyles.colors.accent500,
       tabBarInactiveTintColor: GlobalStyles.colors.gray400,
       headerRight: () =>(
-      <IconButton icon='add' size={24} color='white' onPress={()=> {}}/>
+      <IconButton icon='add' size={24} color='white' onPress={()=> {
+        navigation.navigate('ManageExpenses')
+      }}/>
     ),
     }}>
       <BottomTab.Screen name="RecentExpenses" component={RecentExpenses}
