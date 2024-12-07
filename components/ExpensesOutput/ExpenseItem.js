@@ -4,11 +4,11 @@ import { GlobalStyles } from "../../constants/styles";
 import getFormattedDate from "../../util/date";
 
 
-export default function ExpenseItem({title, date, amount,}) {
+export default function ExpenseItem({id, title, date, amount,}) {
     const navigation = useNavigation();
 
     function expensePressHandler(){
-        navigation.navigate('ManageExpenses');
+        navigation.navigate('ManageExpenses', {expenseId: id});
        
     }
   return (
