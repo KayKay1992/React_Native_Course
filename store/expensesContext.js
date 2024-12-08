@@ -67,7 +67,28 @@ function  ExpensesContextProvider({children}){
  function updateExpense(id, expenseData){
     dispatch({type: 'UPDATE', payload: {id: id, data: expenseData}})
  }
-  return <ExpensesContext.Provider>
+
+ const value = {
+   expenses: expensesState,
+   addExpense: addExpense,
+   deleteExpense: deleteExpense,
+   updateExpense: updateExpense,
+   //Some other functions you can use here
+   // getExpenseById: getExpenseById,
+   // getTotalExpenses: getTotalExpenses,
+   // getCategoryExpenses: getCategoryExpenses,
+   // getTopThreeExpenses: getTopThreeExpenses,
+   // getRecentExpenses: getRecentExpenses,
+   // getExpensesByDate: getExpensesByDate,
+   // getExpensesByCategory: getExpensesByCategory,
+   // getExpensesByAmountRange: getExpensesByAmountRange,
+   // getExpensesByDescription: getExpensesByDescription,
+   // getExpensesByTag: getExpensesByTag,
+   // getExpensesByMultipleCriteria: getExpensesByMultipleCriteria,
+   // getExpensesByDateRange: getExpensesByDateRange,
+   // getExpensesByLocation: getExpensesByLocation,
+ };
+  return <ExpensesContext.Provider value={value}>
 {children}
   </ExpensesContext.Provider>
 }
