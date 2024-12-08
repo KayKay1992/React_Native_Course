@@ -1,11 +1,13 @@
 
-import { useLayoutEffect } from 'react';
+import { useContext, useLayoutEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native'
 import IconButton from '../components/UI/iconButton';
 import { GlobalStyles } from '../constants/styles';
 import Button from '../components/UI/Button';
+import { ExpensesContext } from '../store/expensesContext';
 
 export default function ManageExpenses({route, navigation}) {
+ const expensesCtx =  useContext(ExpensesContext)
   const edittedExpenseId = route.params?.expenseId;
   // Implement logic to fetch expense data and handle editing or creating a new expense based on edittedExpenseId.
   // (!!) is used to convert value into boolean
@@ -18,6 +20,7 @@ export default function ManageExpenses({route, navigation}) {
   })
   
   function deleteExpenseHandler(){
+    expensesCtx.deleteExpense(edittedExpenseId)
     navigation.goBack()
   }
 
@@ -26,6 +29,22 @@ export default function ManageExpenses({route, navigation}) {
   }
 
   function confirmHandler(){
+    // Implement logic to save or update expense data based on edittedExpenseId.
+    if(isEditing){
+      expensesCtx.updateExpense(
+        edittedExpenseId,
+        {
+        title: 'Test',
+        amount: 1000,
+        date: new Date('2023-01-3')
+      })
+    }else {
+      expensesCtx.addExpense({
+        title: 'Test!!!',
+        amount: 1000.00,
+        date: new Date('2024-01-3')
+      }) 
+    }
     navigation.goBack()
   }
  
