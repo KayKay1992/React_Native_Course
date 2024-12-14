@@ -19,7 +19,10 @@ export default function ExpenseForm() {
         onChangeDate: ()=>{}
     }}/>
     <Input  label='Title' TextInputConfig={{
-        
+        multiline: true,
+        // numberOfLines: 3,
+        // autoCorrect: false,
+
     }}/>
   </View>
   )
