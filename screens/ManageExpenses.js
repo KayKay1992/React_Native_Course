@@ -5,6 +5,7 @@ import IconButton from '../components/UI/iconButton';
 import { GlobalStyles } from '../constants/styles';
 import Button from '../components/UI/Button';
 import { ExpensesContext } from '../store/expensesContext';
+import ExpenseForm from '../components/manageExpense/ExpenseForm';
 
 export default function ManageExpenses({route, navigation}) {
  const expensesCtx =  useContext(ExpensesContext)
@@ -51,7 +52,7 @@ export default function ManageExpenses({route, navigation}) {
 
   return (
     <View style={styles.container}>
-      
+      <ExpenseForm/>
       {/* Adding buttons closing d modals without editing, closing the modal after editing and deleting */}
       <View style={styles.buttons}>
         <Button mode='flat' onPress={cancelHandler} style={styles.buttton}>Cancel</Button>
