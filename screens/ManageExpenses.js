@@ -1,6 +1,6 @@
 
 import { useContext, useLayoutEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, TextInput, View } from 'react-native'
 import IconButton from '../components/UI/iconButton';
 import { GlobalStyles } from '../constants/styles';
 import Button from '../components/UI/Button';
@@ -51,6 +51,7 @@ export default function ManageExpenses({route, navigation}) {
 
   return (
     <View style={styles.container}>
+      
       {/* Adding buttons closing d modals without editing, closing the modal after editing and deleting */}
       <View style={styles.buttons}>
         <Button mode='flat' onPress={cancelHandler} style={styles.buttton}>Cancel</Button>
