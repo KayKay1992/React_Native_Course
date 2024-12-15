@@ -14,6 +14,8 @@ export default function ManageExpenses({route, navigation}) {
   // (!!) is used to convert value into boolean
   const isEditing = !!edittedExpenseId
 
+  const selectedExpense = expensesCtx.expenses.find(expense => expense.id === edittedExpenseId);
+
   useLayoutEffect(() => {
     navigation.setOptions({
       title: isEditing ? 'Edit Expense' : 'Add Expense'
@@ -44,7 +46,7 @@ export default function ManageExpenses({route, navigation}) {
 
   return (
     <View style={styles.container}>
-      <ExpenseForm submitButtonLabel={isEditing? 'Update' : 'Add'} onCancel={cancelHandler} onSubmit={confirmHandler}/>
+      <ExpenseForm submitButtonLabel={isEditing? 'Update' : 'Add'} onCancel={cancelHandler} onSubmit={confirmHandler} defaultValues={selectedExpense}/>
       {/* Adding buttons closing d modals without editing, closing the modal after editing and deleting */}
       
       {isEditing &&
