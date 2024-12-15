@@ -1,13 +1,14 @@
-import {  StyleSheet, Text, View,  } from "react-native";
+import {  Alert, StyleSheet, Text, View,  } from "react-native";
 import Input from "./Input";
 import { useState } from "react";
 import Button from "../UI/Button";
+import getFormattedDate from "../../util/date";
 
 
 export default function ExpenseForm({submitButtonLabel, onCancel, onSubmit, defaultValues}) {
     const [inputValue, setInputValue] = useState({
         amount: defaultValues ? defaultValues.amount.toString() : '',
-        date:  defaultValues ? defaultValues.date.toISOString().slice(0, 10) : '',
+        date:  defaultValues ? getFormattedDate(defaultValues.date) : '',
         title:  defaultValues ? defaultValues.title : ''
     })
 
@@ -26,6 +27,18 @@ export default function ExpenseForm({submitButtonLabel, onCancel, onSubmit, defa
             date: new Date(inputValue.date),
             title: inputValue.title,
         };
+        // Adding Validations to the expense form
+
+        const amountIsValid = !isNaN(expenseData.amount) && expenseData.amount > 0;
+
+        const dateIsValid = expenseData.date.toString() !== 'Invalid Date';
+
+        const titleIsValid = expenseData.title.trim().length > 0
+
+        if(!amountIsValid ||!dateIsValid ||!titleIsValid){
+          Alert.alert('Please enter valid values for all fields.');
+            return;
+        }
         onSubmit(expenseData);
     }
  
