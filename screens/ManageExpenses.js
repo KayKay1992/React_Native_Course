@@ -29,22 +29,14 @@ export default function ManageExpenses({route, navigation}) {
      navigation.goBack()
   }
 
-  function confirmHandler(){
+  function confirmHandler(expenseData){
     // Implement logic to save or update expense data based on edittedExpenseId.
     if(isEditing){
       expensesCtx.updateExpense(
         edittedExpenseId,
-        {
-        title: 'Test',
-        amount: 1000,
-        date: new Date('2023-01-3')
-      })
+       expenseData)
     }else {
-      expensesCtx.addExpense({
-        title: 'Test!!!',
-        amount: 1000.00,
-        date: new Date('2024-01-3')
-      }) 
+      expensesCtx.addExpense(expenseData) 
     }
     navigation.goBack()
   }
@@ -52,7 +44,7 @@ export default function ManageExpenses({route, navigation}) {
 
   return (
     <View style={styles.container}>
-      <ExpenseForm submitButtonLabel={isEditing? 'Update' : 'Add'} onCancel={cancelHandler}/>
+      <ExpenseForm submitButtonLabel={isEditing? 'Update' : 'Add'} onCancel={cancelHandler} onSubmit={confirmHandler}/>
       {/* Adding buttons closing d modals without editing, closing the modal after editing and deleting */}
       
       {isEditing &&
