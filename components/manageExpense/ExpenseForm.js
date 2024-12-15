@@ -1,9 +1,10 @@
 import {  StyleSheet, Text, View,  } from "react-native";
 import Input from "./Input";
 import { useState } from "react";
+import Button from "../UI/Button";
 
 
-export default function ExpenseForm() {
+export default function ExpenseForm({submitButtonLabel, onCancel, onSubmit,}) {
     const [inputValue, setInputValue] = useState({
         amount: '',
         date: '',
@@ -18,6 +19,16 @@ export default function ExpenseForm() {
             }
         });
     }
+
+    function submitHandler(){
+        onSubmit(inputValue);
+        setInputValue({
+            amount: '',
+            date: '',
+            title: ''
+        })
+    }
+ 
 
   return (
   <View style={styles.formStyle
@@ -47,6 +58,10 @@ export default function ExpenseForm() {
         // autoCorrect: false,
 
     }}/>
+    <View style={styles.buttons}>
+            <Button mode='flat' onPress={onCancel} style={styles.buttton}>Cancel</Button>
+            <Button onPress={submitHandler} style={styles.buttton}>{submitButtonLabel}</Button>
+          </View>
   </View>
   )
 }
@@ -70,4 +85,13 @@ const styles = StyleSheet.create({
     rowInput: {
         flex: 1,
     },
+    buttons: {
+        flexDirection: 'row',
+        justifyContent:'center',
+        alignItems: 'center',
+      },
+      buttton: {
+        minWidth: 120,
+        paddingHorizontal: 8
+      },
  });

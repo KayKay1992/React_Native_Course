@@ -52,12 +52,9 @@ export default function ManageExpenses({route, navigation}) {
 
   return (
     <View style={styles.container}>
-      <ExpenseForm/>
+      <ExpenseForm submitButtonLabel={isEditing? 'Update' : 'Add'} onCancel={cancelHandler}/>
       {/* Adding buttons closing d modals without editing, closing the modal after editing and deleting */}
-      <View style={styles.buttons}>
-        <Button mode='flat' onPress={cancelHandler} style={styles.buttton}>Cancel</Button>
-        <Button onPress={confirmHandler} style={styles.buttton}>{isEditing ? 'Update' : 'Add'}</Button>
-      </View>
+      
       {isEditing &&
       <View style={styles.deleteContainer}>
        <IconButton icon='trash' color={GlobalStyles.colors.error500} size={36} onPress={deleteExpenseHandler}/>
@@ -73,15 +70,7 @@ const styles = StyleSheet.create({
     backgroundColor: GlobalStyles.colors.primary800,
    
   },
-  buttons: {
-    flexDirection: 'row',
-    justifyContent:'center',
-    alignItems: 'center',
-  },
-  buttton: {
-    minWidth: 120,
-    paddingHorizontal: 8
-  },
+  
   deleteContainer: {
     marginTop: 16,
     paddingTop: 8,
