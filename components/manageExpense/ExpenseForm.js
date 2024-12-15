@@ -2,13 +2,17 @@ import { StyleSheet, Text, View,  } from "react-native";
 import Input from "./Input";
 import { useState } from "react";
 import Button from "../UI/Button";
-import {getFormattedDate} from "../../util/date";
+import getFormattedDate from "../../util/date";
+import { GlobalStyles } from "../../constants/styles";
 
 
 export default function ExpenseForm({submitButtonLabel, onCancel, onSubmit, defaultValues}) {
     const [inputs, setInputs] = useState({
         amount: {value : defaultValues ? defaultValues.amount.toString() : '', isValid: true},
-        date: {value : defaultValues ? getFormattedDate(defaultValues.date) : '', isValid: true},
+
+        date:
+         { value : defaultValues ? getFormattedDate(defaultValues.date) : '', isValid: true },
+
         title:  {value : defaultValues ? defaultValues.title : '', isValid: true}
     })
 
@@ -56,26 +60,28 @@ export default function ExpenseForm({submitButtonLabel, onCancel, onSubmit, defa
  
 
   return (
-  <View style={styles.formStyle
-
-  }>
+  <View style={styles.formStyle}>
     <Text style={styles.title}>Your Expense</Text>
     <View style={styles.inputsRow}>
-    <Input style={styles.rowInput} label='Amount' textInputConfig={{
+    <Input style={styles.rowInput} label='Amount' 
+    invalid={!inputs.amount.isValid}
+    textInputConfig={{
         keyboardType: 'decimal-pad',
         onChangeText: inputChangeHandler.bind(this, 'amount'),
         value: inputs.amount.value,
-        
-  
     }} />
-    <Input style={styles.rowInput} label='Date' textInputConfig={{
+    <Input style={styles.rowInput} label='Date'
+    invalid={!inputs.date.isValid}
+     textInputConfig={{
         placeholder: 'yyyy-MM-dd',
         maxLength: 10,
         onChangeText: inputChangeHandler.bind(this, 'date'),
         value: inputs.date.value,
     }}/>
     </View>
-    <Input  label='Title' textInputConfig={{
+    <Input  label='Title' 
+      invalid={!inputs.title.isValid}
+    textInputConfig={{
         multiline: true,
         onChangeText: inputChangeHandler.bind(this, 'title'),
         value: inputs.title.value,
@@ -83,7 +89,7 @@ export default function ExpenseForm({submitButtonLabel, onCancel, onSubmit, defa
         // autoCorrect: false,
 
     }}/>
-    {formIsInvalid && (<Text>Invalid inputs Values please check your eneterd data</Text>)}
+    {formIsInvalid && (<Text style={styles.errorText}>Invalid inputs Values please check your eneterd data</Text>)}
     <View style={styles.buttons}>
             <Button mode='flat' onPress={onCancel} style={styles.buttton}>Cancel</Button>
             <Button onPress={submitHandler} style={styles.buttton}>{submitButtonLabel}</Button>
@@ -120,4 +126,9 @@ const styles = StyleSheet.create({
         minWidth: 120,
         paddingHorizontal: 8
       },
+      errorText: {
+        textAlign: 'center',
+        color: GlobalStyles.colors.error500,
+        margin: 8,
+      }
  });
