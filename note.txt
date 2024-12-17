@@ -1,4 +1,3 @@
-<UPDATING AND DELETING BACKEND DATA FROM FIREBASE BACKEND/>
+<Managing the Loading Effect/>
 
-So what will we do here is to introduce more functions in http js file, beside fetch and store we will need function for update expense and delete expense from firebase.
-so in update function we will get the id  of the expenses we want to update and expenseData as parameters. then to update we sent a put request to backed url then we target the id of the expense.
+Now we will show the user some feedback while the rquest is on his way, some loading spinner. we can start from recent expenses.when you reload tthe app it shows that no expenses in the last 7 days briefly before the app gets loaded. so instaed of that we will show some loading spinner while we are fetching and then the result when we are done fetching. to achieve this we build a new component in ui folder named loadingOverlay file. 
