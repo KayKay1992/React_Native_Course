@@ -1,3 +1,7 @@
-<Managing the Loading Effect/>
+<Handling Request Errors/>
 
-Now we will show the user some feedback while the rquest is on his way, some loading spinner. we can start from recent expenses.when you reload tthe app it shows that no expenses in the last 7 days briefly before the app gets loaded. so instaed of that we will show some loading spinner while we are fetching and then the result when we are done fetching. to achieve this we build a new component in ui folder named loadingOverlay file. 
+things can go wrong while adding spinner to simulate this we can for example add a typo in the url, it can also fail due to internet connectivity issues, due to firebase itself etc. when you reload the spinner the spinner will endlessly be spining. 
+
+we should handle promise rejection and we should show more meaningful feedback to the user about the problem
+
+to achieve this we should add another another overlay component in the ui folder which we called errorOverlay. 

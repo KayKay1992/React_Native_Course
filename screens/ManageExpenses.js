@@ -7,9 +7,11 @@ import { ExpensesContext } from '../store/expensesContext';
 import ExpenseForm from '../components/manageExpense/ExpenseForm';
 import { deleteExpense, storeExpense, updateExpense } from '../util/http';
 import LoadingOverlay from '../components/UI/LoadingOverlay';
+import ErrorOverlay from '../components/UI/ErrorOverlay';
 
 export default function ManageExpenses({route, navigation}) {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState()
  const expensesCtx =  useContext(ExpensesContext)
   const edittedExpenseId = route.params?.expenseId;
   // Implement logic to fetch expense data and handle editing or creating a new expense based on edittedExpenseId.
@@ -27,9 +29,15 @@ export default function ManageExpenses({route, navigation}) {
  async function deleteExpenseHandler(){
     // Implement logic to delete expense data based on edittedExpenseId.
     setIsSubmitting(true);
-   await deleteExpense(edittedExpenseId);
+    try {
+      await deleteExpense(edittedExpenseId) 
     expensesCtx.deleteExpense(edittedExpenseId)
     navigation.goBack()
+    }catch(error){
+      setError('Failed to delete expense')
+      setIsSubmitting(false);
+    }
+   
   }
 
   function cancelHandler (){
@@ -39,16 +47,25 @@ export default function ManageExpenses({route, navigation}) {
  async  function confirmHandler(expenseData){
     // Implement logic to save or update expense data based on edittedExpenseId.
     setIsSubmitting(true);
-    if(isEditing){
-      expensesCtx.updateExpense(
-        edittedExpenseId,
-       expenseData)
-      await updateExpense(edittedExpenseId, expenseData)
-    }else {
-   const id =  await  storeExpense(expenseData)
-      expensesCtx.addExpense({...expenseData, id: id}) 
+    try{
+      if(isEditing){
+        expensesCtx.updateExpense(
+          edittedExpenseId,
+         expenseData)
+        await updateExpense(edittedExpenseId, expenseData)
+      }else {
+     const id =  await  storeExpense(expenseData)
+        expensesCtx.addExpense({...expenseData, id: id}) 
+      }
+      navigation.goBack()
+    }catch(error){
+      setError('Could not save expense information')
+      setIsSubmitting(false)
     }
-    navigation.goBack()
+  }
+
+  if(error && !isSubmitting){
+    return <ErrorOverlay message={error} />
   }
 
   if(isSubmitting){
