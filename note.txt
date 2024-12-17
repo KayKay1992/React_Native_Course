@@ -1,0 +1,6 @@
+<USING RESPONSE DATA FROM POST REQUESTS>
+
+So we want to improve the app the way we do fetch expenese for example, when we add a new expenese it adds at the top becaause our set up is that when we add a new expenses it comes to the beginning of the array. However, when we forces a reloaded the new expenses we added comes to the bottom. the reason is that on firebase they are stored in chronoligical order so the newer expense comes at the end and the older expenses come at the beginning...the date of the expenese doesnt matter rather the time it was added. 
+Now what we want to do is that we make the new expense to be at the beginning or at the top. we achieved this by adding inverted to the set case.
+
+ANOTHER  TWERK IS TO MAKE USE OF THE FIREBASE GENERATED ID INSTEAD OF OUR OWN SET ID.

@@ -31,15 +31,15 @@ export default function ManageExpenses({route, navigation}) {
      navigation.goBack()
   }
 
-  function confirmHandler(expenseData){
+ async  function confirmHandler(expenseData){
     // Implement logic to save or update expense data based on edittedExpenseId.
     if(isEditing){
       expensesCtx.updateExpense(
         edittedExpenseId,
        expenseData)
     }else {
-      storeExpense(expenseData)
-      expensesCtx.addExpense(expenseData) 
+   const id =  await  storeExpense(expenseData)
+      expensesCtx.addExpense({...expenseData, id: id}) 
     }
     navigation.goBack()
   }
